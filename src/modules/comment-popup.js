@@ -1,8 +1,8 @@
 import closeIcon from '../assets/Icons/close.png';
 
-const modal=async (item)=>{
-    const popup=document.querySelector('#popup-container')
-    popup.innerHTML=`
+const modal = async (item) => {
+  const popup = document.querySelector('#popup-container');
+  popup.innerHTML = `
     <div class="modal">
     <div class="modalHeader">
     <img src="${closeIcon}" alt ="close" class="close">
@@ -34,12 +34,10 @@ const modal=async (item)=>{
     </div>
     </div>
     </div>
-    `
-    popup.style.display = 'flex';
-    document.querySelector('.close').addEventListener('click', () => {
-        document.querySelector('#popup-container').style.display = 'none';
-        
-      });
-      
-}
+    `;
+  popup.style.display = 'flex';
+  document.querySelector('.close').addEventListener('click', () => {
+    document.querySelector('#popup-container').style.display = 'none';
+  });
+};
 export default modal;
