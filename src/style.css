@@ -118,3 +118,80 @@ body {
   border-radius: 18px;
   cursor: pointer;
 }
+
+#popup-container{
+  display: none;
+ justify-content: center;
+ align-items: center;
+ position: fixed;
+ top: 0;
+ height: 100%;
+ z-index: 100;
+ backdrop-filter: blur(0.3125rem);
+ -webkit-backdrop-filter: blur(0.3125rem);
+ -moz-backdrop-filter: blur(0.3125rem);
+ border: 2px solid #000;
+ width: 100%;
+}
+.modal{
+  
+ width: 50%;
+ background-color: darkgray;
+ overflow-y: scroll;
+ height: 100%;
+}
+.modalHeader img{
+ cursor: pointer;
+width: 46px;
+left:77%;
+ top: 13%;
+ z-index: 101;
+ height: 50px;
+ position: relative;
+}
+.modalBody{
+ padding-top: 2px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+}
+.moreInfo{
+ display: flex;
+ flex-direction: row;
+}
+.title{
+ font-size: xx-large;
+}
+.moreInfo{
+ padding: 2em;
+ width: 80%;
+ flex-direction: column;
+ display: flex;
+ box-shadow: 2px 2px 2px 2px #706e61;
+}
+.divForm{
+ align-items: center;
+ justify-content: center;
+ padding: 2em;
+ width: 80%;
+ flex-direction: column;
+ display: flex;
+ box-shadow: 2px 2px 2px 2px #706e61;
+}
+form{
+ gap: 1px;
+width: 50%;
+ flex-direction: column;
+ display: flex;
+}
+.modalImg{
+ width: 50%;
+ height: auto;
+}
+.add{
+background-color: #0b1e3f ; 
+color: white;
+}
+
+
