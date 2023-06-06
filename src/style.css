@@ -60,11 +60,6 @@ body {
   font-weight: bold;
 }
 
-.main {
-  min-height: 90%;
-  width: 100%;
-}
-
 .foot {
   background-color: #0b1e3f;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
