@@ -24,7 +24,7 @@ async function fetchFilmData(id) {
 
 function createMovieCard(movieData) {
   const newcard = document.createElement('div');
-  newcard.classList.add('movie-card');
+  newcard.classList.add('film-card');
 
   const title = document.createElement('h2');
   title.innerText = movieData.name;
