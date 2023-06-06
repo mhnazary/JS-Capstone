@@ -1,4 +1,5 @@
 import './style.css';
+import './modules/reservations.js';
 import logo from './assets/Icons/logo.png';
 
 const Logo = document.querySelector('.logo');
