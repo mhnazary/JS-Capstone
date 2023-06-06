@@ -1,4 +1,4 @@
-import closeX from '../assets/Icons/close-outline.svg';
+import closeX from '../assets/Icons/close-circle-sharp.svg';
 import tvShow from '../assets/TvShows/Succesion.jpg';
 
 const tvShowLocation = document.querySelector('.tvshow_img');
