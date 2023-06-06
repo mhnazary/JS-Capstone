@@ -75,3 +75,46 @@ body {
   color: #fff;
   font-size: 1.3rem;
 }
+
+#cards {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.film-card {
+  display: flex;
+  margin: 1.5%;
+  flex-direction: column;
+  width: 15rem;
+  justify-content: center;
+  text-align: center;
+}
+
+.film-card p {
+  display: flex;
+  padding: 0.5rem;
+  width: 100%;
+  justify-content: flex-start;
+  background-color: white;
+  text-align: left;
+  height: 3rem;
+}
+
+.film-card button {
+  height: 35px;
+  background-color: #0b1e3f;
+  border-radius: 8px;
+  border: 1px solid white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+}
+
+.film-card img {
+  height: 100%;
+  border-radius: 18px;
+  cursor: pointer;
+}
