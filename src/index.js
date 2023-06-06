@@ -35,6 +35,10 @@ function createMovieCard(movieData) {
   const comment = document.createElement('button');
   comment.innerHTML = 'Comment';
 
+  const reserve = document.createElement('button');
+  reserve.innerHTML = 'reservations';
+  reserve.classList.add('reserveBtn');
+
   const genres = document.createElement('p');
   genres.innerHTML = `<strong>Gatagories:</strong> ${movieData.genres.join(', ')}`;
 
@@ -43,6 +47,7 @@ function createMovieCard(movieData) {
   newcard.appendChild(pic);
   newcard.appendChild(genres);
   newcard.appendChild(comment);
+  newcard.appendChild(reserve);
   return newcard;
 }
 
