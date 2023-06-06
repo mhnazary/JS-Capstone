@@ -135,19 +135,19 @@ body {
 }
 
 .modal {
-  width: 50%;
-  background-color: darkgray;
+  width: 33%;
+  background-color: #f2ebeb;
   overflow-y: scroll;
-  height: 100%;
+  height: 73%;
 }
 
 .modalHeader img {
   cursor: pointer;
-  width: 46px;
+  width: 23px;
   left: 77%;
-  top: 13%;
+  top: 14%;
   z-index: 101;
-  height: 50px;
+  height: 31px;
   position: relative;
 }
 
@@ -160,11 +160,11 @@ body {
 }
 
 .title {
-  font-size: xx-large;
+  font-size: x-large;
 }
 
 .moreInfo {
-  padding: 2em;
+  padding: 1em;
   width: 80%;
   flex-direction: column;
   display: flex;
@@ -174,7 +174,7 @@ body {
 .divForm {
   align-items: center;
   justify-content: center;
-  padding: 2em;
+  padding: 1em;
   width: 80%;
   flex-direction: column;
   display: flex;
@@ -189,7 +189,7 @@ form {
 }
 
 .modalImg {
-  width: 50%;
+  width: 30%;
   height: auto;
 }
 
