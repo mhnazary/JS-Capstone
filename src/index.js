@@ -55,7 +55,7 @@ function createMovieCard(movieData) {
   newcard.appendChild(reserve);
   reserve.addEventListener('click', () => {
     modalReserve(movieData);
-    });
+  });
   comment.addEventListener('click', () => {
     modal(movieData);
   });

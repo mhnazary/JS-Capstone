@@ -138,7 +138,7 @@ body {
   border: 2px solid #000;
   width: 100%;
 }
-  
+
 #subcontainer {
   width: 40%;
   height: auto;
@@ -213,7 +213,8 @@ input {
   background-color: #0b1e3f;
   color: gainsboro;
   border-radius: 8px;
-=======
+}
+
 .modal {
   width: 33%;
   background-color: rgb(46, 40, 40, 0.8);
