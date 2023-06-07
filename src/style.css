@@ -210,7 +210,7 @@ h4 {
   gap: 0.3vw;
 }
 
-input {
+input,textarea {
   border-radius: 6px;
   width: 15vw;
   height: 2vw;
