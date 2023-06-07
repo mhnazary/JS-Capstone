@@ -136,7 +136,7 @@ body {
 
 .modal {
   width: 33%;
-  background-color: #f2ebeb;
+  background-color: rgb(46, 40, 40, 0.8);
   overflow-y: scroll;
   height: 73%;
 }
