@@ -1,4 +1,4 @@
-const lists = async (comments, date) => {
+export const lists = async (comments, date) => {
     const list = document.querySelector('.listComment');
     try {
       list.innerHTML = '';
@@ -22,4 +22,3 @@ const lists = async (comments, date) => {
   };
   
   
-   export default lists

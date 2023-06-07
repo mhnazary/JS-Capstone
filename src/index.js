@@ -3,7 +3,7 @@ import Reserve from './modules/reservations.js';
 import logo from './assets/Icons/logo.png';
 import modal from './modules/comment-popup.js';
 import Comment from './modules/comment';
-import lists from './modules/listscomment';
+import { lists } from './modules/listscomment';
 
 const commentObj= new Comment()
 

@@ -57,7 +57,8 @@ const modal = async (item ,commetObj,lists) => {
   
     // Refresh the comments list for the item
     const commentsarr = await commetObj.getcomment(item.id);
-    console.log(commentsarr)
+console.log("commentsarr :",commentsarr);
+
     await lists(commentsarr, date);
   
     // Clear the input fields
