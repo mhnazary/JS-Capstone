@@ -9,29 +9,27 @@ Logo.src = logo;
 const filmAPI = 'https://api.tvmaze.com/shows';
 const likesAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/EK8AqlUP7MtIYG7gJYqn/likes/';
 
-
 const filmCardsContainer = document.getElementById('cards');
 
 const fetchLikes = async (id) => {
-  const response = await fetch(`${likesAPI}?item_id=${id}`);
+  const response = await fetch(`${likesAPI}?itemId=${id}`);
   const data = await response.json();
-  const res = data.find(({ item_id }) => item_id === id);
+  const res = data.find(({ itemId }) => itemId === id);
   return res ? res.likes : 0;
 };
 
-
 // This function fetches data for a specific TV show using the TVMaze API.
 async function fetchFilmData(id) {
-    const res = await fetch(`${filmAPI}/${id}`);
-    const data = await res.json();
-    return {
-        name: data.name,
-        image: data.image.medium,
-        summary: data.summary,
-        genres: data.genres,
-        language: data.language,
-        runtime: data.runtime,
-    };
+  const res = await fetch(`${filmAPI}/${id}`);
+  const data = await res.json();
+  return {
+    name: data.name,
+    image: data.image.medium,
+    summary: data.summary,
+    genres: data.genres,
+    language: data.language,
+    runtime: data.runtime,
+  };
 }
 
 const updateLikes = async (showId, likes) => {
@@ -106,17 +104,17 @@ const createMovieCard = async (movieData, id) => {
 };
 
 // An asynchronous function that fetches data for all TV shows and creates film cards for each one.
-async function createMovieCards() {
+const createMovieCards = async () => {
   const res = await fetch(`${filmAPI}`);
   const showData = await res.json();
   const shows = showData.slice(0, 20);
 
   // For each TV show, fetch its data and create a film card for it.
-  for (const show of shows) {
+  shows.forEach(async (show) => {
     const filmData = await fetchFilmData(show.id);
     const filmCard = await createMovieCard(filmData, show.id);
     filmCardsContainer.appendChild(filmCard);
-  }
-}
+  });
+};
 
 createMovieCards();
