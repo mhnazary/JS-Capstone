@@ -1,5 +1,5 @@
 import './style.css';
-import modalReserve from './modules/reservations.js';
+import Reserve from './modules/reservations.js';
 import logo from './assets/Icons/logo.png';
 import modal from './modules/comment-popup.js';
 
@@ -54,8 +54,8 @@ function createMovieCard(movieData) {
   newcard.appendChild(comment);
   newcard.appendChild(reserve);
   reserve.addEventListener('click', () => {
-    modalReserve(movieData);
-    });
+    Reserve(movieData);
+  });
   comment.addEventListener('click', () => {
     modal(movieData);
   });
