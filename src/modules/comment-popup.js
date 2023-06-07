@@ -1,6 +1,6 @@
 import closeIcon from '../assets/Icons/close.png';
 
-const modal = async (item ,commetObj,lists) => {
+const modal = async (item, comment) => {
   const popup = document.querySelector('#popup-container');
   popup.innerHTML = `
     <div class="modal">
@@ -23,7 +23,7 @@ const modal = async (item ,commetObj,lists) => {
     </div>
     <div class="divForm">
         <h3>Add your comment</h3>
-        <form action="" method="post" id="add-score">
+        <form action="" method="post" id="add-form">
           
             <label for="name-input"></label>
             <input type="text" id="name-input" placeholder="Name" required>
@@ -39,32 +39,36 @@ const modal = async (item ,commetObj,lists) => {
   document.querySelector('.close').addEventListener('click', () => {
     document.querySelector('#popup-container').style.display = 'none';
   });
-  document.querySelector('#add-btn').addEventListener('click', (event) => {
-    add(event, commetObj, lists);
-  });
+  const list = document.querySelector('.listComment');
+  const commentForm = document.querySelector('#add-form');
 
-  const add = async (event, commetObj, lists) => {
-    const nameInputElement = document.getElementById('name-input');
-    const commentInputElement = document.getElementById('comment-input');
+  try {
+    const comments = await comment.getcomment(item.id);
+    comments.forEach((comment) => {
+      const li = document.createElement('li');
+      li.textContent = `${comment.username}: ${comment.comment} :${comment.creation_date}`;
+      list.appendChild(li);
+    });
+  } catch (error) {
+    return;
+  }
+  document.querySelector('#add-btn').addEventListener('click', async (event) => {
     event.preventDefault();
-  
-    // Get the values from the input fields
-    const name = nameInputElement.value;
-    const comments = commentInputElement.value;
-    const date = new Date().toISOString().slice(0, 10);
-    // Add the comments to the item
-    await commetObj.addcomments(name, comments,item.id);
-  
-    // Refresh the comments list for the item
-    const commentsarr = await commetObj.getcomment(item.id);
-console.log("commentsarr :",commentsarr);
-
-    await lists(commentsarr, date);
-  
-    // Clear the input fields
-    nameInputElement.value = '';
-    commentInputElement.value = '';
-  };
-  
+    const username = document.getElementById('name-input').value;
+    const commentText = document.getElementById('comment-input').value;
+    try {
+      await comment.addcomments(username, commentText, item.id);
+      commentForm.reset();
+      const comments = await comment.getcomment(item.id);
+      list.innerHTML = '';
+      comments.forEach((comment) => {
+        const li = document.createElement('li');
+        li.textContent = `${comment.username}: ${comment.comment}:${comment.creation_date}`;
+        list.appendChild(li);
+      });
+    } catch (error) {
+      list.innerHTML = '<span>There was an error adding comment<span>';
+    }
+  });
 };
 export default modal;
