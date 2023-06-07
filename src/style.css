@@ -35,6 +35,10 @@ body {
   align-items: center;
 }
 
+li {
+  list-style-type: none;
+}
+
 .header ul li {
   display: inline-block;
   margin-right: 20px;
@@ -149,7 +153,7 @@ body {
   border: 2px solid #000;
   width: 100%;
 }
-  
+
 #subcontainer {
   width: 40%;
   height: auto;
@@ -210,7 +214,8 @@ h4 {
   gap: 0.3vw;
 }
 
-input,textarea {
+input,
+textarea {
   border-radius: 6px;
   width: 15vw;
   height: 2vw;
@@ -228,10 +233,12 @@ input,textarea {
 }
 
 .modal {
+  font-size: smaller;
+  color: white;
   width: 33%;
   background-color: rgb(46, 40, 40, 0.8);
   overflow-y: scroll;
-  height: 73%;
+  height: 80%;
 }
 
 .modalHeader img {
@@ -253,11 +260,11 @@ input,textarea {
 }
 
 .title {
-  font-size: x-large;
+  font-size: large;
 }
 
 .moreInfo {
-  padding: 1em;
+  padding: 0.5em;
   width: 80%;
   flex-direction: column;
   display: flex;
@@ -267,7 +274,7 @@ input,textarea {
 .divForm {
   align-items: center;
   justify-content: center;
-  padding: 1em;
+  padding: 0.5em;
   width: 80%;
   flex-direction: column;
   display: flex;
@@ -289,4 +296,18 @@ form {
 .add {
   background-color: #0b1e3f;
   color: white;
+}
+
+.showComment {
+  width: 80%;
+  box-shadow: 2px 2px 2px 2px #706e61;
+  padding: 0.5em;
+  flex-direction: column;
+  display: flex;
+}
+
+.showComment h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
