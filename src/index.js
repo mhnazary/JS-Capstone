@@ -1,5 +1,5 @@
 import './style.css';
-import './modules/reservations.js';
+import modalReserve from'./modules/reservations.js';
 import logo from './assets/Icons/logo.png';
 
 const Logo = document.querySelector('.logo');
@@ -18,6 +18,8 @@ async function fetchFilmData(id) {
     image: data.image.medium,
     summary: data.summary,
     genres: data.genres,
+    language: data.language,
+    runtime: data.runtime,
   };
 }
 
@@ -37,11 +39,11 @@ function createMovieCard(movieData) {
   comment.innerHTML = 'Comment';
 
   const reserve = document.createElement('button');
-  reserve.innerHTML = 'reservations';
+  reserve.innerHTML = 'Reservations';
   reserve.classList.add('reserveBtn');
 
   const genres = document.createElement('p');
-  genres.innerHTML = `<strong>Gatagories:</strong> ${movieData.genres.join(', ')}`;
+  genres.innerHTML = `<strong>Categories:</strong> ${movieData.genres.join(', ')}`;
 
   // Add the h2, img, p, and button elements to the div element.
   newcard.appendChild(title);
@@ -49,6 +51,9 @@ function createMovieCard(movieData) {
   newcard.appendChild(genres);
   newcard.appendChild(comment);
   newcard.appendChild(reserve);
+  reserve.addEventListener('click', () => {
+    modalReserve(movieData);
+  });
   return newcard;
 }
 

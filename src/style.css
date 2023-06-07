@@ -147,7 +147,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 1vw;
+  margin-top: 0.5vw;
   margin-left: 5vw;
 }
 
@@ -166,10 +166,11 @@ h4 {
 #description_card {
   display: grid;
   margin-left: 12vw;
-  grid-template-columns: 8vw 8vw;
-  grid-template-rows: 1vw 1vw;
+  margin-top: 0.5vw;
+  grid-template-columns: 15vw;
+  grid-template-rows: 1vw 1vw 1vw;
   row-gap: 0;
-  column-gap: 1vw;
+  column-gap: 0;
 }
 
 .feature {
@@ -179,7 +180,7 @@ h4 {
 }
 
 #reservations {
-  height: 5vw;
+  height: 4vw;
   margin-top: 0.5vw;
   color: gainsboro;
 }
@@ -190,7 +191,7 @@ h4 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5vw;
+  gap: 0.3vw;
 }
 
 input {

@@ -12,15 +12,14 @@ const modalReserve = async (item) => {
       <div id="show_description">
         <h3>${item.name}</h3>
         <div id="description_card">
-          <span class="feature"><b><i>Language :</i></b>${item.language} </span>
-          <span class="feature"><b><i>Run time  :</i></b>${item.runtime}</span>
-          <span class="feature"><b><i>Geners  :</i></b>${item.genres.join(', ')}</span>
-          <span class="feature"><b><i>Language :</i></b>${item.language} </span>
+          <span class="feature"><b><i>Language: </i></b>${item.language}</span>
+          <span class="feature"><b><i>Run time: </i></b>${item.runtime} minutes</span>
+          <span class="feature"><b><i>Geners: </i></b>${item.genres.join(', ')}</span>
         </div>
       </div>
 
       <div id="reservations">
-        <h4 id="reservs_title">Reservations<span>0</span></h4>
+        <h4 id="reservs_title">Reservations<span> (0) </span></h4>
         <ul id="reservations_list">
         </ul>
       </div>
