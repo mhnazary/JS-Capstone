@@ -119,6 +119,11 @@ body {
   cursor: pointer;
 }
 
+#reservation_page {
+  display: none;
+  flex-direction: column;
+}
+
 #popup-container {
   display: none;
   justify-content: center;
@@ -133,7 +138,82 @@ body {
   border: 2px solid #000;
   width: 100%;
 }
+  
+#subcontainer {
+  width: 40%;
+  height: auto;
+  background-color: rgb(46, 40, 40, 0.8);
+  border: 0.5px rgb(46, 40, 40, 0.8) solid;
+  border-radius: 18px;
+}
 
+#head_reservations {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 0.5vw;
+  margin-left: 5vw;
+}
+
+.closeX img {
+  width: 5vw;
+  margin-top: -1vw;
+  cursor: pointer;
+}
+
+h3,
+h4 {
+  text-align: center;
+  color: gainsboro;
+}
+
+#description_card {
+  display: grid;
+  margin-left: 12vw;
+  margin-top: 0.5vw;
+  grid-template-columns: 15vw;
+  grid-template-rows: 1vw 1vw 1vw;
+  row-gap: 0;
+  column-gap: 0;
+}
+
+.feature {
+  font-size: 0.8vw;
+  font-weight: 400;
+  color: gainsboro;
+}
+
+#reservations {
+  height: 4vw;
+  margin-top: 0.5vw;
+  color: gainsboro;
+}
+
+#add_reservations {
+  margin-top: 0.5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3vw;
+}
+
+input {
+  border-radius: 6px;
+  width: 15vw;
+  height: 2vw;
+}
+
+#reserve_button {
+  font-size: 1.2vw;
+  width: 9vw;
+  height: 3vw;
+  margin-bottom: 1vw;
+  cursor: pointer;
+  background-color: #0b1e3f;
+  color: gainsboro;
+  border-radius: 8px;
+=======
 .modal {
   width: 33%;
   background-color: rgb(46, 40, 40, 0.8);
