@@ -1,6 +1,6 @@
 import closeX from '../assets/Icons/close-circle-sharp.svg';
 
-const modalReserve = async (item) => {
+const Reserve = async (item) => {
   const popupReserve = document.querySelector('#reservation_page');
   popupReserve.innerHTML = `
     <div id="subcontainer">
@@ -39,4 +39,4 @@ const modalReserve = async (item) => {
     document.querySelector('#reservation_page').style.display = 'none';
   });
 };
-export default modalReserve;
+export default Reserve;

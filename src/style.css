@@ -122,6 +122,17 @@ body {
 #reservation_page {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  z-index: 100;
+  backdrop-filter: blur(0.3125rem);
+  -webkit-backdrop-filter: blur(0.3125rem);
+  -moz-backdrop-filter: blur(0.3125rem);
+  border: 2px solid #000;
+  width: 100%;
 }
 
 #popup-container {
@@ -191,6 +202,7 @@ h4 {
 
 #add_reservations {
   margin-top: 0.5vw;
+  margin-left: 10vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -213,7 +225,8 @@ input {
   background-color: #0b1e3f;
   color: gainsboro;
   border-radius: 8px;
-=======
+}
+
 .modal {
   width: 33%;
   background-color: rgb(46, 40, 40, 0.8);
