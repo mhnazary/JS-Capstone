@@ -1,5 +1,5 @@
 import './style.css';
-import modalReserve from'./modules/reservations.js';
+import modalReserve from './modules/reservations.js';
 import logo from './assets/Icons/logo.png';
 
 const Logo = document.querySelector('.logo');
