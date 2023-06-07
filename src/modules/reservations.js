@@ -1,5 +1,46 @@
 import closeX from '../assets/Icons/close-circle-sharp.svg';
 
+const reservationsAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/EK8AqlUP7MtIYG7gJYqn/reservations/';
+
+const fetchReservations = async (itemId) => {
+  try {
+    const response = await fetch(`${reservationsAPI}?item_id=${itemId}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error al obtener las reservaciones:', error);
+    return [];
+  }
+};
+
+const createReservation = async (reservationData) => {
+  try {
+    const response = await fetch(`${reservationsAPI}`, {
+      method: 'POST',
+      body: JSON.stringify(reservationData),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    if (response.status === 201) {
+      console.log('Reserva creada exitosamente');
+    } else {
+      console.error('Error al crear la reserva');
+    }
+  } catch (error) {
+    console.error('Error al conectarse con la API de reservaciones', error);
+  }
+};
+
+const updateReservationsList = (reservationsList, reservations) => {
+  reservationsList.innerHTML = '';
+  reservations.forEach((reservation) => {
+    const reservationItem = document.createElement('li');
+    reservationItem.innerText = `${reservation.username} - Start Date: ${reservation.date_start}, End Date: ${reservation.date_end}`;
+    reservationsList.appendChild(reservationItem);
+  });
+};
+
 const Reserve = async (item) => {
   const popupReserve = document.querySelector('#reservation_page');
   popupReserve.innerHTML = `
@@ -14,14 +55,13 @@ const Reserve = async (item) => {
         <div id="description_card">
           <span class="feature"><b><i>Language: </i></b>${item.language}</span>
           <span class="feature"><b><i>Run time: </i></b>${item.runtime} minutes</span>
-          <span class="feature"><b><i>Geners: </i></b>${item.genres.join(', ')}</span>
+          <span class="feature"><b><i>Genres: </i></b>${item.genres.join(', ')}</span>
         </div>
       </div>
 
       <div id="reservations">
         <h4 id="reservs_title">Reservations<span> (0) </span></h4>
-        <ul id="reservations_list">
-        </ul>
+        <ul id="reservations_list"></ul>
       </div>
 
       <form id="add_reservations">
@@ -33,10 +73,34 @@ const Reserve = async (item) => {
       </form>
 
     </div>
-    `;
+  `;
   popupReserve.style.display = 'flex';
-  document.querySelector('.closeX').addEventListener('click', () => {
-    document.querySelector('#reservation_page').style.display = 'none';
+
+  const reservationsList = document.getElementById('reservations_list');
+  const reservations = await fetchReservations(item.id);
+  updateReservationsList(reservationsList, reservations);
+
+  const reservationForm = document.getElementById('add_reservations');
+  reservationForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const nameInput = reservationForm.querySelector('#add-name');
+    const startDateInput = reservationForm.querySelector('#start_date');
+    const endDateInput = reservationForm.querySelector('#end_date');
+
+    const reservationData = {
+      item_id: item.id,
+      username: nameInput.value,
+      date_start: startDateInput.value,
+      date_end: endDateInput.value,
+    };
+
+    await createReservation(reservationData);
+
+    const updatedReservations = await fetchReservations(item.id);
+    updateReservationsList(reservationsList, updatedReservations);
+
+    reservationForm.reset();
   });
 };
+
 export default Reserve;

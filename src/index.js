@@ -1,7 +1,7 @@
 import './style.css';
-import Reserve from './modules/reservations.js';
 import logo from './assets/Icons/logo.png';
 import modal from './modules/comment-popup.js';
+import Reserve from './modules/reservations.js';
 
 const Logo = document.querySelector('.logo');
 Logo.src = logo;
@@ -25,7 +25,6 @@ async function fetchFilmData(id) {
 }
 
 // This function creates a film card DOM element using data for a specific TV show.
-
 function createMovieCard(movieData) {
   const newcard = document.createElement('div');
   newcard.classList.add('film-card');
@@ -73,6 +72,9 @@ async function createMovieCards() {
     const filmData = await fetchFilmData(show.id);
     const filmCard = createMovieCard(filmData);
     filmCardsContainer.appendChild(filmCard);
+    filmCard.querySelector('.reserveBtn').addEventListener('click', () => {
+      Reserve(filmData, show.id);
+    });
   });
 }
 
