@@ -7,8 +7,16 @@ const Logo = document.querySelector('.logo');
 Logo.src = logo;
 
 const filmAPI = 'https://api.tvmaze.com/shows';
+const likesAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/EK8AqlUP7MtIYG7gJYqn/likes/';
 
 const filmCardsContainer = document.getElementById('cards');
+
+const fetchLikes = async (id) => {
+  const response = await fetch(`${likesAPI}?itemId=${id}`);
+  const data = await response.json();
+  const res = data.find(({ itemId }) => itemId === id);
+  return res ? res.likes : 0;
+};
 
 // This function fetches data for a specific TV show using the TVMaze API.
 async function fetchFilmData(id) {
@@ -24,11 +32,24 @@ async function fetchFilmData(id) {
   };
 }
 
+const updateLikes = async (showId, likes) => {
+  const response = await fetch(`${likesAPI}`, {
+    method: 'POST',
+    body: JSON.stringify({ item_id: showId, likes }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const data = await response.text();
+  return data;
+};
+
 // This function creates a film card DOM element using data for a specific TV show.
 
-function createMovieCard(movieData) {
+const createMovieCard = async (movieData, id) => {
   const newcard = document.createElement('div');
   newcard.classList.add('film-card');
+  newcard.id = `movie-${id}`;
 
   const title = document.createElement('h2');
   title.innerText = movieData.name;
@@ -39,6 +60,23 @@ function createMovieCard(movieData) {
   const comment = document.createElement('button');
   comment.innerHTML = 'Comment';
   comment.classList.add('commentBtn');
+
+  const likeBtn = document.createElement('button');
+  likeBtn.classList.add('likes');
+  likeBtn.innerHTML = 'Like';
+
+  const likes = document.createElement('p');
+  likes.innerHTML = 'Likes: 0';
+
+  const filmLikes = await fetchLikes(id);
+  likes.innerHTML = `Likes: ${filmLikes}`;
+
+  likeBtn.addEventListener('click', async () => {
+    const Clike = parseInt(likes.innerHTML.split(' ')[1], 10);
+    const newLikes = Clike + 1;
+    likes.innerHTML = `Likes: ${newLikes}`;
+    await updateLikes(id, newLikes);
+  });
 
   const reserve = document.createElement('button');
   reserve.innerHTML = 'Reservations';
@@ -51,8 +89,11 @@ function createMovieCard(movieData) {
   newcard.appendChild(title);
   newcard.appendChild(pic);
   newcard.appendChild(genres);
+  newcard.appendChild(likeBtn);
+  newcard.appendChild(likes);
   newcard.appendChild(comment);
   newcard.appendChild(reserve);
+
   reserve.addEventListener('click', () => {
     Reserve(movieData);
   });
@@ -60,10 +101,10 @@ function createMovieCard(movieData) {
     modal(movieData);
   });
   return newcard;
-}
+};
 
 // An asynchronous function that fetches data for all TV shows and creates film cards for each one.
-async function createMovieCards() {
+const createMovieCards = async () => {
   const res = await fetch(`${filmAPI}`);
   const showData = await res.json();
   const shows = showData.slice(0, 20);
@@ -71,10 +112,9 @@ async function createMovieCards() {
   // For each TV show, fetch its data and create a film card for it.
   shows.forEach(async (show) => {
     const filmData = await fetchFilmData(show.id);
-    const filmCard = createMovieCard(filmData);
+    const filmCard = await createMovieCard(filmData, show.id);
     filmCardsContainer.appendChild(filmCard);
   });
-}
+};
 
-// Call the createMovieCards function to fetch TV show data and create film cards.
 createMovieCards();
