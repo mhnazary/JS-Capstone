@@ -1,5 +1,10 @@
 import closeX from '../assets/Icons/close-circle-sharp.svg';
 
+function formatDate(dateString) {
+  const [day, month, year] = dateString.split('/');
+  return `${year}-${month}-${day}`;
+}
+
 const Reserve = async (item, Reservation) => {
   const popupReserve = document.querySelector('#reservation_page');
   popupReserve.innerHTML = `
@@ -73,10 +78,5 @@ const Reserve = async (item, Reservation) => {
     }
   });
 };
-
-function formatDate(dateString) {
-  const [day, month, year] = dateString.split('/');
-  return `${year}-${month}-${day}`;
-}
 
 export default Reserve;
