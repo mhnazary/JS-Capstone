@@ -1,9 +1,7 @@
 import closeX from '../assets/Icons/close-circle-sharp.svg';
-import Reservation from './reservations_api.js';
 
-const Reserve = async (item) => {
-  const reservation = new Reservation();
-
+const Reserve = async (item, reservation) => {
+  
   const popupReserve = document.querySelector('#reservation_page');
   popupReserve.innerHTML = `
     <div id="subcontainer">
@@ -43,9 +41,9 @@ const Reserve = async (item) => {
   });
   const list = document.querySelector('#reservations_list');
   const reservationForm = document.querySelector('#add_reservations');
-
   try {
     const reservations = await reservation.getReservations(item.id);
+    console.log(reservations);
     reservations.forEach((reservation) => {
       const li = document.createElement('li');
       li.textContent = `${reservation.username}: From ${reservation.date_start} to ${reservation.date_end}`;
@@ -70,6 +68,7 @@ const Reserve = async (item) => {
         list.appendChild(li);
       });
     } catch (error) {
+      console.log('Error adding reservation:', error);
       list.innerHTML = '<span class="reservation_error">There was an error adding reservation</span>';
     }
   });
