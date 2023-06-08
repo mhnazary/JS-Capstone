@@ -8,14 +8,13 @@ class Reservation {
     try {
       const response = await fetch(`${this.url}apps/${this.id}/reservations?item_id=${itemid}`);
       const reservations = await response.json();
-      console.log('datafromapi', reservations);
       return reservations;
     } catch (error) {
       return [];
     }
   }
 
-  async addReservation(username, date_start, date_end, id) {
+  async addReservation(username, date_start, date_end, id) {  // eslint-disable-line
     try {
       const requestBody = {
         item_id: id,

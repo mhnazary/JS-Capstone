@@ -5,4 +5,4 @@ const countReservations = () => {
   reservationsCountElement.textContent = reservationsCount;
 };
 
-export default countReservations;  
+export default countReservations;
