@@ -1,6 +1,6 @@
 import closeIcon from '../assets/Icons/close.png';
 
-const modal = async (item, comment) => {
+const modal = async (item, comment, commentcount) => {
   const popup = document.querySelector('#popup-container');
   popup.innerHTML = `
     <div class="modal">
@@ -49,6 +49,7 @@ const modal = async (item, comment) => {
       li.textContent = `${comment.username}: ${comment.comment} :${comment.creation_date}`;
       list.appendChild(li);
     });
+    commentcount(comments);
   } catch (error) {
     return;
   }
@@ -66,6 +67,7 @@ const modal = async (item, comment) => {
         li.textContent = `${comment.username}: ${comment.comment}:${comment.creation_date}`;
         list.appendChild(li);
       });
+      commentcount(comments);
     } catch (error) {
       list.innerHTML = '<span>There was an error adding comment<span>';
     }
