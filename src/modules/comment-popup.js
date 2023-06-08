@@ -16,7 +16,7 @@ const modal = async (item, comment, commentcount) => {
         <span><b><i>Geners  :</i></b>${item.genres.join(', ')}</span>
     </div>
     <div class="showComment">
-        <h2>comments(0)</h2>
+        <h2 class="counterheader"></h2>
         <div class="listComment">
     
         </div>
