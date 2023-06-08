@@ -1,6 +1,9 @@
 import closeX from '../assets/Icons/close-circle-sharp.svg';
+import Reservation from './reservations_api.js';
 
-const Reserve = async (item, Reservation) => {
+const Reserve = async (item) => {
+  const reservation = new Reservation();
+
   const popupReserve = document.querySelector('#reservation_page');
   popupReserve.innerHTML = `
     <div id="subcontainer">
@@ -29,7 +32,7 @@ const Reserve = async (item, Reservation) => {
         <input type="text" name="name" id="add-name" placeholder="Your name" required>
         <input type="text" name="start" id="start_date" placeholder="aaaa-mm-dd">
         <input type="text" name="end" id="end_date" placeholder="aaaa-mm-dd">
-        <button type="submit" id="reserve_button">Reserve</button>
+        <button type="button" value="Add" id="reserve_button">Reserve</button>
       </form>
 
     </div>
@@ -42,14 +45,14 @@ const Reserve = async (item, Reservation) => {
   const reservationForm = document.querySelector('#add_reservations');
 
   try {
-    const reservations = await Reservation.getReservations(item.id);
-    reservations.forEach((Reservation) => {
+    const reservations = await reservation.getReservations(item.id);
+    reservations.forEach((reservation) => {
       const li = document.createElement('li');
-      li.textContent = `${Reservation.username}: From ${Reservation.date_start} to ${Reservation.date_end}`;
+      li.textContent = `${reservation.username}: From ${reservation.date_start} to ${reservation.date_end}`;
       list.appendChild(li);
     });
   } catch (error) {
-    return;
+    console.error('Error fetching reservations:', error);
   }
   document.querySelector('#reserve_button').addEventListener('click', async (event) => {
     event.preventDefault();
@@ -57,17 +60,17 @@ const Reserve = async (item, Reservation) => {
     const startDateText = document.getElementById('start_date').value;
     const endDateText = document.getElementById('end_date').value;
     try {
-      await Reservation.addReservation(username, startDateText, endDateText, item.id);
+      await reservation.addReservation(username, startDateText, endDateText, item.id);
       reservationForm.reset();
-      const reservations = await Reservation.getReservations(item.id);
+      const reservations = await reservation.getReservations(item.id);
       list.innerHTML = '';
-      reservations.forEach((Reservation) => {
+      reservations.forEach((reservation) => {
         const li = document.createElement('li');
-        li.textContent = `${Reservation.username}: ${Reservation.date_start}:${Reservation.date_end}`;
+        li.textContent = `${reservation.username}: From ${reservation.date_start} to ${reservation.date_end}`;
         list.appendChild(li);
       });
     } catch (error) {
-      list.innerHTML = '<span>There was an error adding reservation<span>';
+      list.innerHTML = '<span>There was an error adding reservation</span>';
     }
   });
 };
