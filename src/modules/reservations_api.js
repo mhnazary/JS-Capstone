@@ -19,8 +19,8 @@ class Reservation {
       const requestBody = {
         item_id: id,
         username,
-        date_start: date_start.ISOString().slice(0, 10),
-        date_end: date_end.ISOString().slice(0, 10),
+        date_start: date_start.toISOString().slice(0, 10),
+        date_end: date_end.toISOString().slice(0, 10),
       };
       const response = await fetch(`${this.url}apps/${this.id}/reservations`, {
         method: 'POST',

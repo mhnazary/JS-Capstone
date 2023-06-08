@@ -45,6 +45,7 @@ const Reserve = async (item, reservation) => {
     console.log(reservations);
     reservations.forEach((reservation) => {
       const li = document.createElement('li');
+      li.classList.add('reservation');
       li.textContent = `${reservation.username}: From ${reservation.date_start} to ${reservation.date_end}`;
       list.appendChild(li);
     });

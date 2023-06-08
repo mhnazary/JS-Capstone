@@ -201,9 +201,9 @@ h4 {
 }
 
 .reservation {
-  margin-top: -1vw;
-  margin-left: 1.5vw;
-  font-size: 1vw;
+  margin-top: 0.2vw;
+  text-align: center;
+  font-size: 1.5vw;
   font-weight: 700;
 }
 
