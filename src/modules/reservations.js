@@ -42,7 +42,6 @@ const Reserve = async (item, reservation) => {
   const reservationForm = document.querySelector('#add_reservations');
   try {
     const reservations = await reservation.getReservations(item.id);
-    console.log(reservations);
     reservations.forEach((reservation) => {
       const li = document.createElement('li');
       li.classList.add('reservation');
@@ -50,7 +49,7 @@ const Reserve = async (item, reservation) => {
       list.appendChild(li);
     });
   } catch (error) {
-    console.error('Error fetching reservations:', error);
+    return;
   }
   document.querySelector('#reserve_button').addEventListener('click', async (event) => {
     event.preventDefault();
@@ -70,7 +69,6 @@ const Reserve = async (item, reservation) => {
         list.appendChild(li);
       });
     } catch (error) {
-      console.log('Error adding reservation:', error);
       list.innerHTML = '<span class="reservation_error">There was an error adding reservation</span>';
     }
   });
