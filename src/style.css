@@ -305,3 +305,7 @@ form {
   background-color: #0b1e3f;
   color: white;
 }
+
+.likes {
+  display: none;
+}
