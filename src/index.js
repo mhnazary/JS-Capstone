@@ -1,13 +1,15 @@
 import './style.css';
-import Reserve from './modules/reservations.js';
 import logo from './assets/Icons/logo.png';
 import modal from './modules/comment-popup.js';
+import Reservation from './modules/reservations_api.js';
+import Reserve from './modules/reservations.js';
 import Comment from './modules/comment.js';
 
 const commentObj = new Comment();
-
 const Logo = document.querySelector('.logo');
 Logo.src = logo;
+
+const reservationObj = new Reservation();
 
 const filmAPI = 'https://api.tvmaze.com/shows';
 const likesAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/EK8AqlUP7MtIYG7gJYqn/likes/';
@@ -99,7 +101,7 @@ const createMovieCard = async (movieData, id) => {
   newcard.appendChild(reserve);
 
   reserve.addEventListener('click', () => {
-    Reserve(movieData);
+    Reserve(movieData, reservationObj);
   });
   comment.addEventListener('click', () => {
     modal(movieData, commentObj);
