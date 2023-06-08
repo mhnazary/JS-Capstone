@@ -1,7 +1,7 @@
 import closeX from '../assets/Icons/close-circle-sharp.svg';
-import countReservations from './reservationsCounter.js';
 
 const Reserve = async (item, reservation) => {
+  
   const popupReserve = document.querySelector('#reservation_page');
   popupReserve.innerHTML = `
     <div id="subcontainer">
@@ -20,7 +20,7 @@ const Reserve = async (item, reservation) => {
       </div>
 
       <div id="reservations">
-        <h4 id="reservs_title">Reservations (<span id="reservationsCounter></span>)</h4>
+        <h4 id="reservs_title">Reservations<span> (0) </span></h4>
         <ul id="reservations_list">
         </ul>
       </div>
@@ -43,25 +43,22 @@ const Reserve = async (item, reservation) => {
   const reservationForm = document.querySelector('#add_reservations');
   try {
     const reservations = await reservation.getReservations(item.id);
+    console.log(reservations);
     reservations.forEach((reservation) => {
       const li = document.createElement('li');
-      li.classList.add('reservation');
       li.textContent = `${reservation.username}: From ${reservation.date_start} to ${reservation.date_end}`;
       list.appendChild(li);
     });
-    countReservations();
   } catch (error) {
-    return;
+    console.error('Error fetching reservations:', error);
   }
   document.querySelector('#reserve_button').addEventListener('click', async (event) => {
     event.preventDefault();
     const username = document.getElementById('add-name').value;
     const startDateText = document.getElementById('start_date').value;
     const endDateText = document.getElementById('end_date').value;
-    const startDate = new Date(startDateText);
-    const endDate = new Date(endDateText);
     try {
-      await reservation.addReservation(username, startDate, endDate, item.id);
+      await reservation.addReservation(username, startDateText, endDateText, item.id);
       reservationForm.reset();
       const reservations = await reservation.getReservations(item.id);
       list.innerHTML = '';
@@ -71,6 +68,7 @@ const Reserve = async (item, reservation) => {
         list.appendChild(li);
       });
     } catch (error) {
+      console.log('Error adding reservation:', error);
       list.innerHTML = '<span class="reservation_error">There was an error adding reservation</span>';
     }
   });

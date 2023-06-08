@@ -8,19 +8,20 @@ class Reservation {
     try {
       const response = await fetch(`${this.url}apps/${this.id}/reservations?item_id=${itemid}`);
       const reservations = await response.json();
+      console.log('datafromapi', reservations);
       return reservations;
     } catch (error) {
       return [];
     }
   }
 
-  async addReservation(username, dateStart, dateEnd, id) {
+  async addReservation(username, date_start, date_end, id) {
     try {
       const requestBody = {
         item_id: id,
         username,
-        date_start: dateStart.toISOString().slice(0, 10),
-        date_end: dateEnd.toISOString().slice(0, 10),
+        date_start,
+        date_end,
       };
       const response = await fetch(`${this.url}apps/${this.id}/reservations`, {
         method: 'POST',
