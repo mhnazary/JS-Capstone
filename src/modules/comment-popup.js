@@ -1,6 +1,6 @@
 import closeIcon from '../assets/Icons/close.png';
 
-const modal = async (item) => {
+const modal = async (item, comment) => {
   const popup = document.querySelector('#popup-container');
   popup.innerHTML = `
     <div class="modal">
@@ -23,7 +23,7 @@ const modal = async (item) => {
     </div>
     <div class="divForm">
         <h3>Add your comment</h3>
-        <form action="" method="post" id="add-score">
+        <form action="" method="post" id="add-form">
           
             <label for="name-input"></label>
             <input type="text" id="name-input" placeholder="Name" required>
@@ -38,6 +38,37 @@ const modal = async (item) => {
   popup.style.display = 'flex';
   document.querySelector('.close').addEventListener('click', () => {
     document.querySelector('#popup-container').style.display = 'none';
+  });
+  const list = document.querySelector('.listComment');
+  const commentForm = document.querySelector('#add-form');
+
+  try {
+    const comments = await comment.getcomment(item.id);
+    comments.forEach((comment) => {
+      const li = document.createElement('li');
+      li.textContent = `${comment.username}: ${comment.comment} :${comment.creation_date}`;
+      list.appendChild(li);
+    });
+  } catch (error) {
+    return;
+  }
+  document.querySelector('#add-btn').addEventListener('click', async (event) => {
+    event.preventDefault();
+    const username = document.getElementById('name-input').value;
+    const commentText = document.getElementById('comment-input').value;
+    try {
+      await comment.addcomments(username, commentText, item.id);
+      commentForm.reset();
+      const comments = await comment.getcomment(item.id);
+      list.innerHTML = '';
+      comments.forEach((comment) => {
+        const li = document.createElement('li');
+        li.textContent = `${comment.username}: ${comment.comment}:${comment.creation_date}`;
+        list.appendChild(li);
+      });
+    } catch (error) {
+      list.innerHTML = '<span>There was an error adding comment<span>';
+    }
   });
 };
 export default modal;

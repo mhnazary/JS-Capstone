@@ -2,6 +2,9 @@ import './style.css';
 import Reserve from './modules/reservations.js';
 import logo from './assets/Icons/logo.png';
 import modal from './modules/comment-popup.js';
+import Comment from './modules/comment.js';
+
+const commentObj = new Comment();
 
 const Logo = document.querySelector('.logo');
 Logo.src = logo;
@@ -23,6 +26,7 @@ async function fetchFilmData(id) {
   const res = await fetch(`${filmAPI}/${id}`);
   const data = await res.json();
   return {
+    id: data.id,
     name: data.name,
     image: data.image.medium,
     summary: data.summary,
@@ -98,7 +102,7 @@ const createMovieCard = async (movieData, id) => {
     Reserve(movieData);
   });
   comment.addEventListener('click', () => {
-    modal(movieData);
+    modal(movieData, commentObj);
   });
   return newcard;
 };
