@@ -1,4 +1,5 @@
 import closeX from '../assets/Icons/close-circle-sharp.svg';
+import countReservations from './reservationsCounter.js';
 
 const Reserve = async (item, reservation) => {
   const popupReserve = document.querySelector('#reservation_page');
@@ -19,7 +20,7 @@ const Reserve = async (item, reservation) => {
       </div>
 
       <div id="reservations">
-        <h4 id="reservs_title">Reservations<span> (0) </span></h4>
+        <h4 id="reservs_title">Reservations (<span id="reservationsCounter></span>)</h4>
         <ul id="reservations_list">
         </ul>
       </div>
@@ -48,6 +49,7 @@ const Reserve = async (item, reservation) => {
       li.textContent = `${reservation.username}: From ${reservation.date_start} to ${reservation.date_end}`;
       list.appendChild(li);
     });
+    countReservations();
   } catch (error) {
     return;
   }
