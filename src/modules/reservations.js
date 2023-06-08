@@ -1,4 +1,5 @@
 import closeX from '../assets/Icons/close-circle-sharp.svg';
+import countReservations from './reservationsCounter.js';
 
 const Reserve = async (item, reservation) => {
   
@@ -20,7 +21,7 @@ const Reserve = async (item, reservation) => {
       </div>
 
       <div id="reservations">
-        <h4 id="reservs_title">Reservations<span> (0) </span></h4>
+        <h4 id="reservs_title">Reservations <span id="reservationCounter"></span></h4>
         <ul id="reservations_list">
         </ul>
       </div>
@@ -49,6 +50,7 @@ const Reserve = async (item, reservation) => {
       li.textContent = `${reservation.username}: From ${reservation.date_start} to ${reservation.date_end}`;
       list.appendChild(li);
     });
+    countReservations();
   } catch (error) {
     console.error('Error fetching reservations:', error);
   }
@@ -67,11 +69,11 @@ const Reserve = async (item, reservation) => {
         li.textContent = `${reservation.username}: From ${reservation.date_start} to ${reservation.date_end}`;
         list.appendChild(li);
       });
+      countReservations();
     } catch (error) {
       console.log('Error adding reservation:', error);
       list.innerHTML = '<span class="reservation_error">There was an error adding reservation</span>';
     }
   });
 };
-
 export default Reserve;
