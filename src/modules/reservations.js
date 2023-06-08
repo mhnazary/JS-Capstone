@@ -70,7 +70,7 @@ const Reserve = async (item) => {
         list.appendChild(li);
       });
     } catch (error) {
-      list.innerHTML = '<span>There was an error adding reservation</span>';
+      list.innerHTML = '<span class="reservation_error">There was an error adding reservation</span>';
     }
   });
 };
