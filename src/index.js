@@ -42,8 +42,7 @@ function createMovieCard(movieData) {
   const reserve = document.createElement('button');
   reserve.innerHTML = 'Reservations';
   reserve.classList.add('reserveBtn');
-  reserve.dataset.itemId = movieData.id;
-
+  
   const genres = document.createElement('p');
   genres.innerHTML = `<strong>Categories:</strong> ${movieData.genres.join(', ')}`;
 
@@ -58,7 +57,7 @@ function createMovieCard(movieData) {
   });
   comment.addEventListener('click', () => {
     modal(movieData);
-  });
+  });  
   return newcard;
 }
 
@@ -74,6 +73,7 @@ async function createMovieCards() {
     const filmCard = createMovieCard(filmData);
     filmCardsContainer.appendChild(filmCard);
   });
+  
 }
 
 // Call the createMovieCards function to fetch TV show data and create film cards.

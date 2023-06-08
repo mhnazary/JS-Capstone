@@ -203,6 +203,7 @@ h4 {
 .reservation {
   text-align: center;
   font-size: 1vw;
+  font-weight: 700;
 }
 
 #add_reservations {
