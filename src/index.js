@@ -3,7 +3,9 @@ import logo from './assets/Icons/logo.png';
 import modal from './modules/comment-popup.js';
 import Reservation from './modules/reservations_api.js';
 import Reserve from './modules/reservations.js';
+import Comment from './modules/comment.js';
 
+const commentObj = new Comment();
 const Logo = document.querySelector('.logo');
 Logo.src = logo;
 
@@ -102,7 +104,7 @@ const createMovieCard = async (movieData, id) => {
     Reserve(movieData, reservationObj);
   });
   comment.addEventListener('click', () => {
-    modal(movieData);
+    modal(movieData, commentObj);
   });
   return newcard;
 };
