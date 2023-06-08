@@ -200,6 +200,11 @@ h4 {
   color: gainsboro;
 }
 
+.reservation {
+  text-align: center;
+  font-size: 1vw;
+}
+
 #add_reservations {
   margin-top: 0.5vw;
   margin-left: 10vw;

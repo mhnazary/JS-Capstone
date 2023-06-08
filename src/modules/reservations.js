@@ -1,8 +1,14 @@
 import closeX from '../assets/Icons/close-circle-sharp.svg';
-import { createReservation, getReservations, appId } from './reservations_api.js';
+import { createReservation, getReservations} from './reservations_api.js';
+
+const appId = 'EK8AqlUP7MtIYG7gJYqn';
 
 const updateReservationsList = (reservationsList, reservations) => {
   reservationsList.innerHTML = '';
+  
+  if (!Array.isArray(reservations)) {
+    reservations = Object.values(reservations);
+  }
 
   if (reservations.length === 0) {
     reservationsList.innerHTML = '<li>No reservations yet</li>';
@@ -11,6 +17,7 @@ const updateReservationsList = (reservationsList, reservations) => {
 
   reservations.forEach((reservation) => {
     const listItem = document.createElement('li');
+    listItem.classList.add('reservation');
     listItem.textContent = `${reservation.username} - ${reservation.date_start} to ${reservation.date_end}`;
     reservationsList.appendChild(listItem);
   });
@@ -74,7 +81,8 @@ const Reserve = async (item) => {
       date_end: endDateInput.value,
     };
 
-    await createReservation(reservationData);
+    await createReservation(reservationData.item_id, 
+      reservationData.username, reservationData.date_start, reservationData.date_end);
 
     const updatedReservations = await getReservations(appId);
     updateReservationsList(reservationsList, updatedReservations);

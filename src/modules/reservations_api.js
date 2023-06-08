@@ -22,8 +22,8 @@ const createReservation = async (itemId, username, dateStart, dateEnd) => {
   return data;
 };
 
-const getReservations = async (appId) => {
-  const url = `${BASE_URL}/apps/${appId}/reservations`;
+const getReservations = async (itemId) => {
+  const url = `${BASE_URL}/apps/${appId}/reservations?item_id=${itemId}`;
   const response = await fetch(url);
   const data = await response.json();
   return data;
