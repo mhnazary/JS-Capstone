@@ -74,4 +74,7 @@ const Reserve = async (item, reservation) => {
     }
   });
 };
+window.addEventListener('DOMContentLoaded', () => {
+  countReservations();
+});
 export default Reserve;
