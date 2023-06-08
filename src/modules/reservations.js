@@ -1,10 +1,5 @@
 import closeX from '../assets/Icons/close-circle-sharp.svg';
 
-function formatDate(dateString) {
-  const [day, month, year] = dateString.split('/');
-  return `${year}-${month}-${day}`;
-}
-
 const Reserve = async (item, Reservation) => {
   const popupReserve = document.querySelector('#reservation_page');
   popupReserve.innerHTML = `
@@ -32,8 +27,8 @@ const Reserve = async (item, Reservation) => {
       <form id="add_reservations">
         <h4 id="reservs_form">Add a reservation</h4>
         <input type="text" name="name" id="add-name" placeholder="Your name" required>
-        <input type="text" name="start" id="start_date" placeholder="dd/mm/aaaa" required>
-        <input type="text" name="end" id="end_date" placeholder="dd/mm/aaaa" required>
+        <input type="text" name="start" id="start_date" placeholder="aaaa-mm-dd">
+        <input type="text" name="end" id="end_date" placeholder="aaaa-mm-dd">
         <button type="submit" id="reserve_button">Reserve</button>
       </form>
 
@@ -61,16 +56,14 @@ const Reserve = async (item, Reservation) => {
     const username = document.getElementById('add-name').value;
     const startDateText = document.getElementById('start_date').value;
     const endDateText = document.getElementById('end_date').value;
-    const formattedStartDate = formatDate(startDateText);
-    const formattedEndDate = formatDate(endDateText);
     try {
-      await Reservation.addReservation(username, formattedStartDate, formattedEndDate, item.id);
+      await Reservation.addReservation(username, startDateText, endDateText, item.id);
       reservationForm.reset();
       const reservations = await Reservation.getReservations(item.id);
       list.innerHTML = '';
       reservations.forEach((Reservation) => {
         const li = document.createElement('li');
-        li.textContent = `${Reservation.username}: ${Reservation.date_start}:${Reservation.end_date}`;
+        li.textContent = `${Reservation.username}: ${Reservation.date_start}:${Reservation.date_end}`;
         list.appendChild(li);
       });
     } catch (error) {

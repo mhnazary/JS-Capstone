@@ -149,7 +149,7 @@ body {
   border: 2px solid #000;
   width: 100%;
 }
-  
+
 #subcontainer {
   width: 40%;
   height: auto;
@@ -216,7 +216,8 @@ h4 {
   gap: 0.3vw;
 }
 
-input,textarea {
+input,
+textarea {
   border-radius: 6px;
   width: 15vw;
   height: 2vw;
