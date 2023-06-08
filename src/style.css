@@ -311,3 +311,7 @@ form {
   justify-content: center;
   align-items: center;
 }
+
+.likes {
+  display: none;
+}
