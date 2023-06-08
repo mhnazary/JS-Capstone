@@ -42,6 +42,7 @@ function createMovieCard(movieData) {
   const reserve = document.createElement('button');
   reserve.innerHTML = 'Reservations';
   reserve.classList.add('reserveBtn');
+  reserve.dataset.itemId = movieData.id;
 
   const genres = document.createElement('p');
   genres.innerHTML = `<strong>Categories:</strong> ${movieData.genres.join(', ')}`;
@@ -72,9 +73,6 @@ async function createMovieCards() {
     const filmData = await fetchFilmData(show.id);
     const filmCard = createMovieCard(filmData);
     filmCardsContainer.appendChild(filmCard);
-    filmCard.querySelector('.reserveBtn').addEventListener('click', () => {
-      Reserve(filmData, show.id);
-    });
   });
 }
 

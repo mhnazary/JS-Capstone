@@ -1,43 +1,18 @@
 import closeX from '../assets/Icons/close-circle-sharp.svg';
-
-const reservationsAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/EK8AqlUP7MtIYG7gJYqn/reservations/';
-
-const fetchReservations = async (itemId) => {
-  try {
-    const response = await fetch(`${reservationsAPI}?item_id=${itemId}`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error al obtener las reservaciones:', error);
-    return [];
-  }
-};
-
-const createReservation = async (reservationData) => {
-  try {
-    const response = await fetch(`${reservationsAPI}`, {
-      method: 'POST',
-      body: JSON.stringify(reservationData),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    if (response.status === 201) {
-      console.log('Reserva creada exitosamente');
-    } else {
-      console.error('Error al crear la reserva');
-    }
-  } catch (error) {
-    console.error('Error al conectarse con la API de reservaciones', error);
-  }
-};
+import { createReservation, getReservations, appId } from './reservations_api.js';
 
 const updateReservationsList = (reservationsList, reservations) => {
   reservationsList.innerHTML = '';
+
+  if (reservations.length === 0) {
+    reservationsList.innerHTML = '<li>No reservations yet</li>';
+    return;
+  }
+
   reservations.forEach((reservation) => {
-    const reservationItem = document.createElement('li');
-    reservationItem.innerText = `${reservation.username} - Start Date: ${reservation.date_start}, End Date: ${reservation.date_end}`;
-    reservationsList.appendChild(reservationItem);
+    const listItem = document.createElement('li');
+    listItem.textContent = `${reservation.username} - ${reservation.date_start} to ${reservation.date_end}`;
+    reservationsList.appendChild(listItem);
   });
 };
 
@@ -61,7 +36,8 @@ const Reserve = async (item) => {
 
       <div id="reservations">
         <h4 id="reservs_title">Reservations<span> (0) </span></h4>
-        <ul id="reservations_list"></ul>
+        <ul id="reservations_list">
+        </ul>
       </div>
 
       <form id="add_reservations">
@@ -75,13 +51,17 @@ const Reserve = async (item) => {
     </div>
   `;
   popupReserve.style.display = 'flex';
+  document.querySelector('.closeX').addEventListener('click', () => {
+    document.querySelector('#reservation_page').style.display = 'none';
+  });
 
   const reservationsList = document.getElementById('reservations_list');
-  const reservations = await fetchReservations(item.id);
+  const reservations = await getReservations(appId);
   updateReservationsList(reservationsList, reservations);
 
   const reservationForm = document.getElementById('add_reservations');
-  reservationForm.addEventListener('submit', async (event) => {
+  const reservationBtn = document.getElementById('reserve_button');
+  reservationBtn.addEventListener('click', async (event) => {
     event.preventDefault();
     const nameInput = reservationForm.querySelector('#add-name');
     const startDateInput = reservationForm.querySelector('#start_date');
@@ -96,7 +76,7 @@ const Reserve = async (item) => {
 
     await createReservation(reservationData);
 
-    const updatedReservations = await fetchReservations(item.id);
+    const updatedReservations = await getReservations(appId);
     updateReservationsList(reservationsList, updatedReservations);
 
     reservationForm.reset();
