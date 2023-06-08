@@ -4,7 +4,6 @@ import modal from './modules/comment-popup.js';
 import Reservation from './modules/reservations_api.js';
 import Reserve from './modules/reservations.js';
 
-
 const Logo = document.querySelector('.logo');
 Logo.src = logo;
 

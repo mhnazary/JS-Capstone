@@ -1,7 +1,6 @@
 import closeX from '../assets/Icons/close-circle-sharp.svg';
 
 const Reserve = async (item, reservation) => {
-  
   const popupReserve = document.querySelector('#reservation_page');
   popupReserve.innerHTML = `
     <div id="subcontainer">
@@ -57,8 +56,10 @@ const Reserve = async (item, reservation) => {
     const username = document.getElementById('add-name').value;
     const startDateText = document.getElementById('start_date').value;
     const endDateText = document.getElementById('end_date').value;
+    const startDate = new Date(startDateText);
+    const endDate = new Date(endDateText);
     try {
-      await reservation.addReservation(username, startDateText, endDateText, item.id);
+      await reservation.addReservation(username, startDate, endDate, item.id);
       reservationForm.reset();
       const reservations = await reservation.getReservations(item.id);
       list.innerHTML = '';
