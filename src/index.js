@@ -17,9 +17,10 @@ const likesAPI = 'https://us-central1-involvement-api.cloudfunctions.net/capston
 const filmCardsContainer = document.getElementById('cards');
 
 const fetchLikes = async (id) => {
-  const response = await fetch(`${likesAPI}?itemId=${id}`);
+  const response = await fetch(`${likesAPI}?item_id=${id}`);
   const data = await response.json();
-  const res = data.find(({ itemId }) => itemId === id);
+  // eslint-disable-next-line
+  const res = data.find(({ item_id }) => item_id === id);
   return res ? res.likes : 0;
 };
 
