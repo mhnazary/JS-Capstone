@@ -51,7 +51,11 @@ li {
   font-size: 22px;
   font-weight: bold;
   position: relative;
-  font-family:sans-serif;
+  font-family: sans-serif;
+}
+
+.header ul li a:hover {
+  border-bottom: 2px solid rgb(255, 174, 0);
 }
 
 .header ul li span {
