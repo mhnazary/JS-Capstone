@@ -116,6 +116,8 @@ const createMovieCards = async () => {
   const res = await fetch(`${filmAPI}`);
   const showData = await res.json();
   const shows = showData.slice(0, 20);
+  const number = shows.length;
+  cardCounter(number);
 
   // For each TV show, fetch its data and create a film card for it.
   shows.forEach(async (show) => {
