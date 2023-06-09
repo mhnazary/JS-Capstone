@@ -3,7 +3,6 @@ import logo from './assets/Icons/logo.png';
 import modal from './modules/comment-popup.js';
 import Reservation from './modules/reservations_api.js';
 import Reserve from './modules/reservations.js';
-import cardCounter from './modules/counter.js';
 import Comment from './modules/comment.js';
 import commentcount from './modules/commentCounter.js';
 
@@ -117,8 +116,6 @@ const createMovieCards = async () => {
   const res = await fetch(`${filmAPI}`);
   const showData = await res.json();
   const shows = showData.slice(0, 20);
-  const number = shows.length;
-  cardCounter(number);
 
   // For each TV show, fetch its data and create a film card for it.
   shows.forEach(async (show) => {

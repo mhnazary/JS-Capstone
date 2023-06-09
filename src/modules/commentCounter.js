@@ -1,9 +1,12 @@
-const commentcount = (comments) => {
+const commentcount = async (comments) => {
+  const header = document.querySelector('.counterheader');
   let count = 0;
   if (comments.length === 0) {
-    return count;
+    header.innerHTML = `Comments(${count})`;
+  } else {
+    count = comments.length;
+    header.innerHTML = `Comments(${count})`;
   }
-  count = comments.length;
 
   return count;
 };

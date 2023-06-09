@@ -50,7 +50,7 @@ const Reserve = async (item, reservation) => {
     });
     countReservations();
   } catch (error) {
-    console.error('Error fetching reservations:', error);// eslint-disable-line no-console
+    console.error('Error fetching reservations:', error);
   }
   document.querySelector('#reserve_button').addEventListener('click', async (event) => {
     event.preventDefault();
@@ -69,7 +69,7 @@ const Reserve = async (item, reservation) => {
       });
       countReservations();
     } catch (error) {
-      console.log('Error adding reservation:', error);// eslint-disable-line no-console
+      console.log('Error adding reservation:', error);
       list.innerHTML = '<span class="reservation_error">There was an error adding reservation</span>';
     }
   });

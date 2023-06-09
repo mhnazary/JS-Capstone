@@ -1,4 +1,4 @@
-import closeIcon from '../assets/Icons/close1.jpeg';
+import closeIcon from '../assets/Icons/close.png';
 
 const modal = async (item, comment, commentcount) => {
   const popup = document.querySelector('#popup-container');
@@ -11,7 +11,7 @@ const modal = async (item, comment, commentcount) => {
     <img class="modalImg" src="${item.image}" alt="modal img">
     <h3 class="title">${item.name}</h3>
     <div class="moreInfo">
-        <span><b><i>Language :</i></b>${item.language} </span>
+        <span><b><i>Language :</i></b>${item.languadge} </span>
         <span><b><i>Run time  :</i></b>${item.runtime}</span>
         <span><b><i>Geners  :</i></b>${item.genres.join(', ')}</span>
     </div>
@@ -41,10 +41,6 @@ const modal = async (item, comment, commentcount) => {
   });
   const list = document.querySelector('.listComment');
   const commentForm = document.querySelector('#add-form');
-  const updateCounter = (count) => {
-    const header = document.querySelector('.counterheader');
-    header.textContent = `Comments (${count})`;
-  };
 
   try {
     const comments = await comment.getcomment(item.id);
@@ -53,7 +49,7 @@ const modal = async (item, comment, commentcount) => {
       li.textContent = `${comment.username}: ${comment.comment} :${comment.creation_date}`;
       list.appendChild(li);
     });
-    updateCounter(commentcount(comments));
+    commentcount(comments);
   } catch (error) {
     return;
   }
@@ -71,7 +67,7 @@ const modal = async (item, comment, commentcount) => {
         li.textContent = `${comment.username}: ${comment.comment}:${comment.creation_date}`;
         list.appendChild(li);
       });
-      updateCounter(list.children.length);
+      commentcount(comments);
     } catch (error) {
       list.innerHTML = '<span>There was an error adding comment<span>';
     }
