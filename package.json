@@ -18,7 +18,7 @@
   "homepage": "https://romans-adi.github.io/todo-app",
   "devDependencies": {
     "@babel/core": "^7.21.8",
-    "@babel/plugin-transform-modules-commonjs": "^7.21.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.22.5",
     "@babel/preset-env": "^7.21.5",
     "@webpack-cli/generators": "^3.0.2",
     "babel-eslint": "^10.1.0",
