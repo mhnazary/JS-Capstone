@@ -3,8 +3,6 @@
  * https://jestjs.io/docs/configuration
  */
 
-module.exports = {
-  coverageDirectory: 'coverage',
-  coverageProvider: 'v8',
-  testEnvironment: 'jsdom',
-};
+export const coverageDirectory = 'coverage';
+export const coverageProvider = 'v8';
+export const testEnvironment = 'jsdom';
