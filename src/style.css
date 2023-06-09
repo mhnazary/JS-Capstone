@@ -46,12 +46,16 @@ li {
 }
 
 .header ul li a {
+  color: white;
   text-decoration: none;
-  padding: 0.6rem 1.8rem;
-  border: 2px solid white;
-  border-radius: 10px;
-  font-size: 1.3rem;
-  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+  position: relative;
+  font-family: sans-serif;
+}
+
+.header ul li a:hover {
+  border-bottom: 2px solid rgb(255, 174, 0);
 }
 
 .header ul li span {
@@ -118,7 +122,7 @@ li {
 }
 
 .film-card img {
-  height: 100%;
+  height: 90%;
   border-radius: 18px;
   cursor: pointer;
 }
@@ -264,13 +268,13 @@ textarea {
 }
 
 .modalHeader img {
+  width: 3vw;
+  margin-top: -2vw;
   cursor: pointer;
-  width: 23px;
-  left: 77%;
+  left: 56%;
   top: 14%;
   z-index: 101;
-  height: 31px;
-  position: relative;
+  position: fixed;
 }
 
 .modalBody {
