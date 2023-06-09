@@ -3,6 +3,7 @@ import logo from './assets/Icons/logo.png';
 import modal from './modules/comment-popup.js';
 import Reservation from './modules/reservations_api.js';
 import Reserve from './modules/reservations.js';
+import cardCounter from './modules/counter.js';
 import Comment from './modules/comment.js';
 
 const commentObj = new Comment();
