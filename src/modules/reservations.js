@@ -20,7 +20,7 @@ const Reserve = async (item, reservation) => {
       </div>
 
       <div id="reservations">
-        <h4 id="reservs_title">Reservations <span id="reservationCounter"></span></h4>
+        <h4 id="reservs_title">Reservations (<span id="reservationCounter"></span>)</h4>
         <ul id="reservations_list">
         </ul>
       </div>
