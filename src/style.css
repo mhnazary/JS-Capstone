@@ -269,13 +269,13 @@ textarea {
 }
 
 .modalHeader img {
-  width: 3vw;
-  margin-top: -2vw;
   cursor: pointer;
-  left: 56%;
+  width: 23px;
+  left: 77%;
   top: 14%;
   z-index: 101;
-  position: fixed;
+  height: 31px;
+  position: relative;
 }
 
 .modalBody {
