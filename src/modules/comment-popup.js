@@ -1,4 +1,4 @@
-import closeIcon from '../assets/Icons/close.png';
+import closeIcon from '../assets/Icons/close1.jpeg';
 
 const modal = async (item, comment, commentcount) => {
   const popup = document.querySelector('#popup-container');
@@ -41,6 +41,10 @@ const modal = async (item, comment, commentcount) => {
   });
   const list = document.querySelector('.listComment');
   const commentForm = document.querySelector('#add-form');
+  const updateCounter = (count) => {
+    const header = document.querySelector('.counterheader');
+    header.textContent = `Comments (${count})`;
+  };
 
   try {
     const comments = await comment.getcomment(item.id);
@@ -49,7 +53,7 @@ const modal = async (item, comment, commentcount) => {
       li.textContent = `${comment.username}: ${comment.comment} :${comment.creation_date}`;
       list.appendChild(li);
     });
-    commentcount(comments);
+    updateCounter(commentcount(comments));
   } catch (error) {
     return;
   }
@@ -67,7 +71,7 @@ const modal = async (item, comment, commentcount) => {
         li.textContent = `${comment.username}: ${comment.comment}:${comment.creation_date}`;
         list.appendChild(li);
       });
-      commentcount(comments);
+      updateCounter(commentcount(comments));
     } catch (error) {
       list.innerHTML = '<span>There was an error adding comment<span>';
     }
