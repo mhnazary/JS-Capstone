@@ -160,6 +160,8 @@ li {
   background-color: rgb(46, 40, 40, 0.8);
   border: 0.5px rgb(46, 40, 40, 0.8) solid;
   border-radius: 18px;
+  max-height: 615px; /* Ajusta la altura máxima según tus necesidades */
+  overflow-y: auto;
 }
 
 #head_reservations {
@@ -199,14 +201,21 @@ h4 {
 }
 
 #reservations {
-  height: 4vw;
+  height: auto;
   margin-top: 0.5vw;
   color: gainsboro;
 }
 
+#reservation_list {
+  height: auto;
+}
+
+#reservations_list li {
+  text-align: center;
+}
+
 .reservation {
   margin-top: 0.2vw;
-  text-align: center;
   font-size: 1.5vw;
   font-weight: 700;
 }

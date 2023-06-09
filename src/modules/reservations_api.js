@@ -14,13 +14,13 @@ class Reservation {
     }
   }
 
-  async addReservation(username, dateStart, dateEnd, id) {
+  async addReservation(username, date_start, date_end, id) {  // eslint-disable-line
     try {
       const requestBody = {
         item_id: id,
         username,
-        date_start: dateStart.toISOString().slice(0, 10),
-        date_end: dateEnd.toISOString().slice(0, 10),
+        date_start,
+        date_end,
       };
       const response = await fetch(`${this.url}apps/${this.id}/reservations`, {
         method: 'POST',
