@@ -327,5 +327,7 @@ form {
 }
 
 .likes {
-  display: none;
+  padding: 0.2rem;
+  display: flex;
+  justify-content: center;
 }
