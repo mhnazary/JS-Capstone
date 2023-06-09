@@ -4,6 +4,7 @@ import modal from './modules/comment-popup.js';
 import Reservation from './modules/reservations_api.js';
 import Reserve from './modules/reservations.js';
 import Comment from './modules/comment.js';
+import commentcount from './modules/commentCounter.js';
 
 const commentObj = new Comment();
 const Logo = document.querySelector('.logo');
@@ -105,7 +106,7 @@ const createMovieCard = async (movieData, id) => {
     Reserve(movieData, reservationObj);
   });
   comment.addEventListener('click', () => {
-    modal(movieData, commentObj);
+    modal(movieData, commentObj, commentcount);
   });
   return newcard;
 };
