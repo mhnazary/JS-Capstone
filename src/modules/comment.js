@@ -8,9 +8,12 @@ class Comment {
     try {
       const response = await fetch(`${this.url}apps/${this.id}/comments?item_id=${itemid}`);
       const comments = await response.json();
+      if (response.status === 404) {
+        return []; // Return empty array if no data found
+      }
       return comments;
     } catch (error) {
-      return [];
+      return [];// Return empty array if response fails
     }
   }
 
