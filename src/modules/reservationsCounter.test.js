@@ -15,19 +15,19 @@ describe('countReservations', () => {
     document.body.innerHTML = '';
   });
 
-  test('should count reservations and update the counter element', () => {
-    countReservations();
-
-    const reservationsCountElement = document.getElementById('reservationCounter');
-    expect(reservationsCountElement.textContent).toBe('2');
-  });
-
-  test('should set counter to 0 when there are no reservations', () => {
+    test('Should set counter to 0 if there are no reservations', () => {
     document.getElementById('reservations_list').innerHTML = '';
 
     countReservations();
 
     const reservationsCountElement = document.getElementById('reservationCounter');
     expect(reservationsCountElement.textContent).toBe('0');
+  });
+  
+  test('Should count and update the counter element', () => {
+    countReservations();
+
+    const reservationsCountElement = document.getElementById('reservationCounter');
+    expect(reservationsCountElement.textContent).toBe('2');
   });
 });
