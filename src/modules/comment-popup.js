@@ -11,7 +11,7 @@ const modal = async (item, comment, commentcount) => {
     <img class="modalImg" src="${item.image}" alt="modal img">
     <h3 class="title">${item.name}</h3>
     <div class="moreInfo">
-        <span><b><i>Language :</i></b>${item.languadge} </span>
+        <span><b><i>Language :</i></b>${item.language} </span>
         <span><b><i>Run time  :</i></b>${item.runtime}</span>
         <span><b><i>Geners  :</i></b>${item.genres.join(', ')}</span>
     </div>
