@@ -71,7 +71,7 @@ const modal = async (item, comment, commentcount) => {
         li.textContent = `${comment.username}: ${comment.comment}:${comment.creation_date}`;
         list.appendChild(li);
       });
-      updateCounter(commentcount(comments));
+      updateCounter(list.children.length);
     } catch (error) {
       list.innerHTML = '<span>There was an error adding comment<span>';
     }
