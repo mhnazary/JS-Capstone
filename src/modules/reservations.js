@@ -1,4 +1,4 @@
-import closeX from '../assets/Icons/close1.jpeg';
+import closeX from '../assets/Icons/close-circle-sharp.svg';
 import countReservations from './reservationsCounter.js';
 
 const Reserve = async (item, reservation) => {

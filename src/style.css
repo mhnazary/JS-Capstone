@@ -173,7 +173,8 @@ li {
 }
 
 .closeX img {
-  width: 3vw;
+  width: 5vw;
+  margin-top: -1vw;
   cursor: pointer;
 }
 
