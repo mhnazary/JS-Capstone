@@ -12,3 +12,18 @@ describe('cardCounter', () => {
     document.body.removeChild(movieCardCount);
   });
 });
+
+test('should handle the case where there are no movies in the DOM', () => {
+  const movieCardCount = document.createElement('span');
+  movieCardCount.id = 'count';
+  document.body.appendChild(movieCardCount);
+
+  const movieItems = document.querySelectorAll('.movie-item');
+  movieItems.forEach((item) => item.remove());
+
+  cardCounter(0);
+
+  expect(movieCardCount.textContent).toEqual('0');
+
+  document.body.removeChild(movieCardCount);
+});
