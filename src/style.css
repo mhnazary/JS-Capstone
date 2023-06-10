@@ -1,0 +1,346 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+  min-height: 90%;
+}
+
+.header {
+  background-color: #0b1e3f;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 6rem;
+  width: 100%;
+  height: 15vh;
+}
+
+.header .logo {
+  height: 90%;
+  width: 5rem;
+  border: 1px solid red;
+  border-radius: 50%;
+}
+
+.header ul {
+  list-style: none;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li {
+  list-style-type: none;
+}
+
+.header ul li {
+  display: inline-block;
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+.header ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: bold;
+  position: relative;
+  font-family: sans-serif;
+}
+
+.header ul li a:hover {
+  border-bottom: 2px solid rgb(255, 174, 0);
+}
+
+.header ul li span {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 3px 8px;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.foot {
+  background-color: #0b1e3f;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 6rem;
+  width: 100%;
+  height: 15vh;
+}
+
+.foot p {
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+#cards {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.film-card {
+  display: flex;
+  margin: 1.5%;
+  flex-direction: column;
+  width: 21%;
+  justify-content: center;
+  text-align: center;
+}
+
+.film-card p {
+  display: flex;
+  padding: 0.5rem;
+  width: 100%;
+  justify-content: flex-start;
+  background-color: white;
+  text-align: left;
+  height: 3rem;
+}
+
+.film-card button {
+  height: 35px;
+  background-color: #0b1e3f;
+  border-radius: 8px;
+  border: 1px solid white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+}
+
+.film-card img {
+  height: 90%;
+  border-radius: 18px;
+  cursor: pointer;
+}
+
+#reservation_page {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  z-index: 100;
+  backdrop-filter: blur(0.3125rem);
+  -webkit-backdrop-filter: blur(0.3125rem);
+  -moz-backdrop-filter: blur(0.3125rem);
+  border: 2px solid #000;
+  width: 100%;
+}
+
+#popup-container {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  z-index: 100;
+  backdrop-filter: blur(0.3125rem);
+  -webkit-backdrop-filter: blur(0.3125rem);
+  -moz-backdrop-filter: blur(0.3125rem);
+  border: 2px solid #000;
+  width: 100%;
+}
+
+#subcontainer {
+  width: 40%;
+  height: auto;
+  background-color: rgb(46, 40, 40, 0.8);
+  border: 0.5px rgb(46, 40, 40, 0.8) solid;
+  border-radius: 18px;
+  max-height: 615px; /* Ajusta la altura máxima según tus necesidades */
+  overflow-y: auto;
+}
+
+#head_reservations {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 0.5vw;
+  margin-left: 5vw;
+}
+
+.closeX img {
+  width: 5vw;
+  margin-top: -1vw;
+  cursor: pointer;
+}
+
+h3,
+h4 {
+  text-align: center;
+  color: gainsboro;
+}
+
+#description_card {
+  display: grid;
+  margin-left: 12vw;
+  margin-top: 0.5vw;
+  grid-template-columns: 15vw;
+  grid-template-rows: 1vw 1vw 1vw;
+  row-gap: 0;
+  column-gap: 0;
+}
+
+.feature {
+  font-size: 0.8vw;
+  font-weight: 400;
+  color: gainsboro;
+}
+
+#reservations {
+  height: auto;
+  margin-top: 0.5vw;
+  color: gainsboro;
+}
+
+#reservation_list {
+  height: auto;
+}
+
+#reservations_list li {
+  text-align: center;
+}
+
+.reservation {
+  margin-top: 0.2vw;
+  font-size: 1.5vw;
+  font-weight: 700;
+}
+
+.reservation_error {
+  color: red;
+  margin-left: 3.5vw;
+  font-size: 2vw;
+  font-weight: 700;
+}
+
+#add_reservations {
+  margin-top: 0.5vw;
+  margin-left: 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3vw;
+}
+
+input,
+textarea {
+  border-radius: 6px;
+  width: 15vw;
+  height: 2vw;
+}
+
+#reserve_button {
+  font-size: 1.2vw;
+  width: 9vw;
+  height: 3vw;
+  margin-bottom: 1vw;
+  cursor: pointer;
+  background-color: #0b1e3f;
+  color: gainsboro;
+  border-radius: 8px;
+}
+
+.modal {
+  font-size: smaller;
+  color: white;
+  width: 33%;
+  background-color: rgb(46, 40, 40, 0.8);
+  overflow-y: scroll;
+  height: 80%;
+}
+
+.modalHeader img {
+  width: 3vw;
+  margin-top: -2vw;
+  cursor: pointer;
+  left: 56%;
+  top: 14%;
+  z-index: 101;
+  position: fixed;
+}
+
+.modalBody {
+  padding-top: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: large;
+}
+
+.moreInfo {
+  padding: 0.5em;
+  width: 80%;
+  flex-direction: column;
+  display: flex;
+  box-shadow: 2px 2px 2px 2px #706e61;
+}
+
+.divForm {
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em;
+  width: 80%;
+  flex-direction: column;
+  display: flex;
+  box-shadow: 2px 2px 2px 2px #706e61;
+}
+
+form {
+  gap: 1px;
+  width: 50%;
+  flex-direction: column;
+  display: flex;
+}
+
+.modalImg {
+  width: 30%;
+  height: auto;
+}
+
+.add {
+  background-color: #0b1e3f;
+  color: white;
+}
+
+.showComment {
+  width: 80%;
+  box-shadow: 2px 2px 2px 2px #706e61;
+  padding: 0.5em;
+  flex-direction: column;
+  display: flex;
+}
+
+.showComment h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.likes {
+  padding: 0.2rem;
+  display: flex;
+  justify-content: center;
+}
